@@ -3,24 +3,27 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.or.dgit.bigdata.school.dao.StudentDao">
-	<resultMap type="Student" id="StudentResult">
+	<resultMap type="student" id="StudentResult">
 		<id property="studId" column="stud_id" />
 		<result property="name" column="name" />
 		<result property="email" column="email" />
 		<result property="dob" column="dob" />
 	</resultMap>
 
-	<select id="selectByAll" resultMap="StudentResult">
+	<select id="selectByAll" resultType="student">
 		select * from student
 	</select>
 	
-	<select id="selectByNo" parameterType="int" resultMap="StudentResult">
+	<select id="selectByNo" parameterType="int" resultType="student">
 		select * from student where stud_id=#{studId}
 	</select>
 	
+	
 	<insert id="insertItem" parameterType="Student">
-		insert into student values(#{studId}, #{name}, #{email}, #{dob});
+		insert into student values(#{studId}, #{name}, #{email}, #{dob}, #{phone});
 	</insert>
+	
+	
 	
 	<delete id="deleteItem" parameterType="int">
 		delete from student where stud_id=#{idx}

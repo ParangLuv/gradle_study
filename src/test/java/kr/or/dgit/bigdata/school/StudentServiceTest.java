@@ -1,15 +1,14 @@
 package kr.or.dgit.bigdata.school;
 
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
-import java.util.spi.CalendarNameProvider;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import kr.or.dgit.bigdata.school.dto.PhoneNumber;
 import kr.or.dgit.bigdata.school.dto.Student;
 import kr.or.dgit.bigdata.school.service.StudentService;
 
@@ -37,18 +36,18 @@ public class StudentServiceTest {
 		Assert.assertNotNull(std);
 	}
 	
-/*	@Test
+	@Test
 	public void testInsertItem(){
 		Calendar cal = Calendar.getInstance();
 		cal.set(2000, 01, 01);
 		
-		Student insStd = new Student(5, "강보미3", "kbm@test.co.kr", cal.getTime());
+		Student insStd = new Student(1, "강보미3", "kbm@test.co.kr", new PhoneNumber("010-1234-1234"),cal.getTime());
 		studentService.insertItem(insStd);
 		
 		List<Student> list = studentService.findAllStudent();
 		
 		Assert.assertEquals(5, list.size());
-	}*/
+	}
 	
 	@Test
 	public void testDeleteItem(){
@@ -65,7 +64,7 @@ public class StudentServiceTest {
 		cal.clear();
 		cal.set(2000,  01, 01);
 		
-		Student update = new Student(4, "이유진", "lyj@test.co.kr", cal.getTime());
+		Student update = new Student(4, "이유진", "lyj@test.co.kr", new PhoneNumber("010-1111-1111"), cal.getTime());
 		
 		studentService.updateItem(update);
 		

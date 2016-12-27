@@ -5,6 +5,9 @@ import java.util.List;
 import kr.or.dgit.bigdata.school.dto.Student;
 
 public interface StudentDao {
+	/**
+	 * @param item StudentDto 
+	 */
 	void insertItem(Student item);
 	void deleteItem(int idx);
 	void updateItem(Student item);

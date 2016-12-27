@@ -2,14 +2,35 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
-sourceCompatibility = 1.8	// 컴파일 할 때 적용되는 JDK Version
-version = '1.0'				// 
+sourceCompatibility = 1.8			// 컴파일 할 때 적용되는 JDK Version
+
+
+
+tasks.withType(JavaCompile) {
+     options.encoding = 'UTF-8'
+}									// 인코딩 지정 
+
+
+
+version = '1.0'						// 내가 만든 프로그램의 버전 
+
+
+
 jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+	mainClassName = 'kr.or.dgit.bigdata.school.TestMain'
+	manifest {
+        attributes 'Implementation-Title': 'School(프로젝트)',
+                   'Implementation-Version': version // 위에서 설정한 버전
     }
+    dependsOn configurations.runtime    // 실행가능한 jar 파일설정, 이 코드가 없으면 실행X 
 }
+
+javadoc {
+    options.encoding = 'utf-8' // 내 프로그램 API문서의 인코딩 설정
+//  destinationDir = '${buildDir}/dist/javadoc' 
+//  title = '${baseName} ${version}' 
+}                                        // 내 프로그램의 API문서 생성 
+
 
 repositories {
     mavenCentral()
